@@ -24,12 +24,11 @@ num_upper = 0
 num_lower = 0
 num_spec = 0
 
-if "\n" in pass_to_test:
-    error_list = error_list + "Your password should be just one line\n"
-
 for c in pass_to_test:
     num_chars += 1
-    if c == " ":
+    if c == "\n" or c == "\r":
+        error_list = error_list + "Your password should be just one line\n"
+    elif c == " ":
         error_list = error_list + "Please remove white space from position " + str(num_chars) + "\n"
     elif c == "\t":
         error_list = error_list + "Please remove tabulation from position " + str(num_chars) + "\n"
